@@ -33,9 +33,9 @@ ALLOWED_HOSTS = [
 ]
 
 # input your line token
-LINE_CHANNEL_ACCESS_TOKEN = 'B73++yvkULvBGo1oNAqVWjA0GlNhxtY3S1gRw1CYMj7Gzo4KsXxtq/TP5V891XLvvsZNI02g5Omh5EnKF0Mps8ccnKEIwPqAmCwnchYA8jo9aHCbVcyNcDZtwKBYou/GrmGzz2TqS6f3MvbMM13kdAdB04t89/1O/w1cDnyilFU='
+LINE_CHANNEL_ACCESS_TOKEN = ''
 # input your line secret
-LINE_CHANNEL_SECRET = '948aeafea67ad77a36cd31bdaffdce64'
+LINE_CHANNEL_SECRET = ''
 
 #static dir route
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
