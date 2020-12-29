@@ -1,0 +1,7 @@
+{
+    "python.analysis.cacheFolderPath": "/Applications/anaconda3/bin/python",
+    "python.autoComplete.extraPaths": [
+        "/Applications/anaconda3/bin/python"
+    ],
+    "python.pythonPath": "/Applications/anaconda3/bin/python"
+}
