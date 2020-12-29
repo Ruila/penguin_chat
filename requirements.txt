@@ -3,13 +3,13 @@ alabaster==0.7.12
 # anaconda-navigator==1.10.0
 # anaconda-project==0.8.3
 applaunchservices==0.2.1
-appnope @ file:///opt/concourse/worker/volumes/live/0291c9e1-4b15-459f-623e-2770f55be269/volume/appnope_1594338395037/work
-appscript @ file:///opt/concourse/worker/volumes/live/50ca4c96-3090-40bb-6981-3a6114ed0af4/volume/appscript_1594840187551/work
+appnope==0.0.1
+appscript==1.1.1
 argh==0.26.2
-argon2-cffi @ file:///opt/concourse/worker/volumes/live/59af29ac-4890-416e-7ab7-794f8d6f7ecd/volume/argon2-cffi_1596828548321/work
+argon2-cffi==20.1.0
 asgiref==3.3.1
-asn1crypto @ file:///tmp/build/80754af9/asn1crypto_1596577642040/work
-astroid @ file:///opt/concourse/worker/volumes/live/21fd14a9-2a7e-484b-7394-5a9912cdcf80/volume/astroid_1592498459180/work
+asn1crypto==1.4.0
+astroid==2.4.2
 astropy==4.0.2
 async-generator==1.10
 atomicwrites==1.4.0
