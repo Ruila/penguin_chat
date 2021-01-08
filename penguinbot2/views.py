@@ -12,6 +12,8 @@ from linebot.models import (MessageEvent,
                          MessageTemplateAction,
                          PostbackEvent,
                          PostbackTemplateAction)
+
+from .scraper import WhatWeather
  
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
 parser = WebhookParser(settings.LINE_CHANNEL_SECRET)
@@ -33,46 +35,48 @@ def callback(request):
  
         for event in events:
             if isinstance(event, MessageEvent):  # 如果有訊息事件
-                buttons_template = TemplateSendMessage(
-                        alt_text='Buttons template',
-                        template=ButtonsTemplate(
-                            title='嗨！我能為你做些什麼嗎？',
-                            text='請選擇服務',
-                            thumbnail_image_url='https://meet.eslite.com/Content/Images/ArtShow/1047258-penguin_20190116145229.jpg',
-                            actions=[
-                                PostbackTemplateAction(
-                                    label='查看天氣',
-                                    text='查看天氣',
-                                    data='A&查看天氣'
-                                ),
-                                PostbackTemplateAction(
-                                    label='東踏曲蜜',
-                                    text='東踏曲蜜',
-                                    data='B&東踏曲蜜'
-                                )
-                            ]
-                        )
-                    )
+                # buttons_template = TemplateSendMessage(
+                #         alt_text='Buttons template',
+                #         template=ButtonsTemplate(
+                #             title='嗨！我能為你做些什麼嗎？',
+                #             text='請選擇服務',
+                #             thumbnail_image_url='https://meet.eslite.com/Content/Images/ArtShow/1047258-penguin_20190116145229.jpg',
+                #             actions=[
+                #                 PostbackTemplateAction(
+                #                     label='查看天氣',
+                #                     text='查看天氣',
+                #                     data='A&查看天氣'
+                #                 ),
+                #                 PostbackTemplateAction(
+                #                     label='東踏曲蜜',
+                #                     text='東踏曲蜜',
+                #                     data='B&東踏曲蜜'
+                #                 )
+                #             ]
+                #         )
+                #     )
+                weather = WhatWeather(event.message.text)
+                # print('event', event.message.text)
                 line_bot_api.reply_message(  # 回復傳入的訊息文字
                     event.reply_token,
-                    buttons_template
-                    # TextSendMessage(text=event.message.text)
+                    # buttons_template
+                    TextSendMessage(text=weather.scrape())
                     #  TextSendMessage(text="ohggg yeah!!!")
 
                 )
-            elif isinstance(event, PostbackEvent):
-                if event.postback.data[0:1] == 'A':
-                    message = TextSendMessage(text=event.postback.data[0:6])
-                    line_bot_api.reply_message(
-                        event.reply_token,
-                        message
-                    )
-                elif event.postback.data[0:1] == 'B':
-                    message = TextSendMessage(text="此服務尚未啟用")
-                    line_bot_api.reply_message(
-                        event.reply_token,
-                        message
-                    )
+            # elif isinstance(event, PostbackEvent):
+            #     if event.postback.data[0:1] == 'A':
+            #         message = TextSendMessage(text=event.postback.data[0:6])
+            #         line_bot_api.reply_message(
+            #             event.reply_token,
+            #             message
+            #         )
+            #     elif event.postback.data[0:1] == 'B':
+            #         message = TextSendMessage(text="此服務尚未啟用")
+            #         line_bot_api.reply_message(
+            #             event.reply_token,
+            #             message
+            #         )
         return HttpResponse()
     else:
         return HttpResponseBadRequest()
