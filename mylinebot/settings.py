@@ -26,7 +26,7 @@ SECRET_KEY = ''
 DEBUG = True
 
 ALLOWED_HOSTS = [
-#    input
+#    input check
 ]
 
 LINE_CHANNEL_ACCESS_TOKEN = ''
