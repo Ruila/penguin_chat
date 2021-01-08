@@ -20,18 +20,20 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ''
+SECRET_KEY = 'e-l3$4(&d_o18m(3x6$x(4$g45ium%$))rpo(3f83$1&14o7s^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = [
-#    input check
+    '127.0.0.1',
+    'c3c1c06de567.ngrok.io'
+    # 'penguinbot2.herokuapp.com'
 ]
 
-LINE_CHANNEL_ACCESS_TOKEN = ''
+LINE_CHANNEL_ACCESS_TOKEN = 'B73++yvkULvBGo1oNAqVWjA0GlNhxtY3S1gRw1CYMj7Gzo4KsXxtq/TP5V891XLvvsZNI02g5Omh5EnKF0Mps8ccnKEIwPqAmCwnchYA8jo9aHCbVcyNcDZtwKBYou/GrmGzz2TqS6f3MvbMM13kdAdB04t89/1O/w1cDnyilFU='
  
-LINE_CHANNEL_SECRET = '
+LINE_CHANNEL_SECRET = '948aeafea67ad77a36cd31bdaffdce64'
 
 # Application definition
 

@@ -33,12 +33,7 @@ def callback(request):
  
         for event in events:
             if isinstance(event, MessageEvent):  # 如果有訊息事件
-                line_bot_api.reply_message(  # 回復傳入的訊息文字
-                    event.reply_token,
-                    
-                    # TextSendMessage(text=event.message.text)
-                    #  TextSendMessage(text="ohggg yeah!!!")
-                    TemplateSendMessage(
+                buttons_template = TemplateSendMessage(
                         alt_text='Buttons template',
                         template=ButtonsTemplate(
                             title='嗨！我能為你做些什麼嗎？',
@@ -50,7 +45,7 @@ def callback(request):
                                     text='查看天氣',
                                     data='A&查看天氣'
                                 ),
-                                 PostbackTemplateAction(
+                                PostbackTemplateAction(
                                     label='東踏曲蜜',
                                     text='東踏曲蜜',
                                     data='B&東踏曲蜜'
@@ -58,13 +53,25 @@ def callback(request):
                             ]
                         )
                     )
+                line_bot_api.reply_message(  # 回復傳入的訊息文字
+                    event.reply_token,
+                    buttons_template
+                    # TextSendMessage(text=event.message.text)
+                    #  TextSendMessage(text="ohggg yeah!!!")
 
                 )
             elif isinstance(event, PostbackEvent):
                 if event.postback.data[0:1] == 'A':
+                    message = TextSendMessage(text=event.postback.data[0:6])
                     line_bot_api.reply_message(
                         event.reply_token,
-                         TextSendMessage(text=event.postback.data[0:6])
+                        message
+                    )
+                elif event.postback.data[0:1] == 'B':
+                    message = TextSendMessage(text="此服務尚未啟用")
+                    line_bot_api.reply_message(
+                        event.reply_token,
+                        message
                     )
         return HttpResponse()
     else:
